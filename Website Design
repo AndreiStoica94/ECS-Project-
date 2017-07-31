@@ -1,0 +1,114 @@
+#This code represents just the design of the website and was create complete in html.
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
+        <title>My Project</title>
+        
+        <style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	width:218px;
+	height:22px;
+	z-index:1;
+	left: 258px;
+	top: 55px;
+}
+#Layer2 {
+	position:absolute;
+	width:44px;
+	height:23px;
+	z-index:2;
+	left: 464px;
+	top: -32px;
+}
+#Layer3 {
+	position:absolute;
+	width:49px;
+	height:21px;
+	z-index:2;
+	left: 867px;
+	top: 24px;
+}
+#Layer4 {
+	position:absolute;
+	width:50px;
+	height:20px;
+	z-index:3;
+	left: 918px;
+	top: -30px;
+}
+#Layer5 {
+	position:absolute;
+	width:68px;
+	height:19px;
+	z-index:1;
+	left: 288px;
+	top: 0px;
+}
+#Layer6 {
+	position:absolute;
+	width:1340;
+	z-index:3;
+	left: 3px;
+	top: 104px;
+	height: 31px;
+}
+-->
+        </style>
+        <link href="../../../wamp64/www/wampthemes/no-style/style.css" rel="stylesheet" type="text/css">  /* here is the server and the css sheet */
+        <style type="text/css">
+<!--
+#Layer7 {
+	position:absolute;
+	width:1340;
+	height:100;
+	z-index:4;
+	top: 0;
+	left: 0;
+	background-color: #00FFFF;
+}
+body {
+	background-color: #CCCCCC;
+}
+#Layer8 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:1;
+	left: 505px;
+	top: 252px;
+}
+#Layer9 {
+	position:absolute;
+	width:1350;
+	height:100;
+	z-index:2;
+	left: 0;
+	top: 0;
+	background-color: #00FFFF;
+}
+-->
+        </style>
+    </head>
+    
+    <body>
+	
+	    <div id="Layer6">
+          <table width="800" border="1" align="center" bordercolor="#0000CC" bgcolor="#00FFFF">
+            <tr>
+              <td width="200"><div align="center"><a href="Website.html">Home</a></div></td>
+              <td width="200"><div align="center"><a href="login.jsp">Login</a></div></td>
+              <td width="200"><div align="center"><a  /* This code represent the menu */
+href="download.jsp">Download</a></div></td>
+              <td width="200"><div align="center"><a href="index.jsp">Upload</a></div></td>
+            </tr>
+          </table>        </div>
+
+<h1>&nbsp;</h1>
+        <div id="Layer9"></div>
+           
+        
+    </body>
+</html>
