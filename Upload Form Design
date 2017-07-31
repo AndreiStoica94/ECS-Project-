@@ -1,0 +1,72 @@
+#Layer 8 represent the design of the upload form which was create in NetBeans using Pallets. The action browse button is to pick a file and then using submit button you can send the file to a server.
+
+<div id="Layer8">
+          <h1>Upload File</h1>
+          <form name="Upload" action="index.jsp" method="POST" enctype="multipart/form-data">
+          
+
+                       <%    /* here is the action of the submit button */
+                String saveFile = new String();
+                String contentType = request.getContentType();
+                
+                if ((contentType != null) && (contentType.indexOf("multipart/form-data") >= 0)){
+                    
+                    DataInputStream in = new DataInputStream(request.getInputStream());
+                    
+                    int formDataLength = request.getContentLength();
+                    byte dataBytes[] = new byte[formDataLength];
+                    int byteRead = 0;
+                    int totalBytesRead = 0;
+                    
+                    while (totalBytesRead < formDataLength){
+                        byteRead = in.read(dataBytes, totalBytesRead, formDataLength);
+                        totalBytesRead += byteRead;
+             
+                    }
+                    
+                    String file = new String(dataBytes);
+                    
+                    saveFile = file.substring(file.indexOf("filename=\"") + 10);
+                    saveFile = saveFile.substring(0, saveFile.indexOf("\n"));
+                    saveFile = saveFile.substring(saveFile.lastIndexOf("\\") + 1, saveFile.indexOf("\""));
+                    
+                    int lastindex = contentType.lastIndexOf("=");
+                    
+                    String boundary = contentType.substring(lastindex + 1, contentType.length());
+                    
+                    int pos;
+                    
+                    pos = file.indexOf("filename=\"");
+                    pos = file.indexOf("\n", pos) + 1;
+                    pos = file.indexOf("\n", pos) + 1;
+                    pos = file.indexOf("\n", pos) + 1;
+                    
+                    int boundaryLocation = file.indexOf(boundary, pos) - 4;
+                    
+                    int startPos = ((file.substring(0, pos)).getBytes()).length;
+                    int endPos = ((file.substring(0, boundaryLocation)).getBytes()).length;
+                   
+                    saveFile = "C:/Upload/" + saveFile; /* here is the way of where the file will be save. In this case the file will be sent to your computer in a specific folder */
+                    
+                    File ff = new File(saveFile);
+                    
+                    try{
+                        
+                        FileOutputStream fileOut = new FileOutputStream(ff);
+                        fileOut.write(dataBytes, startPos, (endPos - startPos));                   
+                        fileOut.flush();
+                        fileOut.close();
+                      
+                    } catch (Exception e){
+                        out.println(e);
+                    }
+                     
+                }
+                %>
+
+            <input type="file" name="file" value="" width="100" />   /* the design of the browse button and submit button */
+            <input type="submit" value="Submit" name="Submit" />
+            
+              
+          </form>
+        </div>
