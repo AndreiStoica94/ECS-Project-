@@ -1,0 +1,30 @@
+#All of this things are import like a page. The follow code represent the server details.
+
+String SFTPHOST = "178.62.63.17";
+                    int    SFTPPORT = 22;
+                    String SFTPUSER = "root";
+                    String SFTPPASS = "mysqlpass";
+                    String SFTPWORKINGDIR = "~/Uploads";
+ 
+                    Session     Session     = null;
+                    Channel     channel     = null;
+                    ChannelSftp channelSftp = null;
+
+                    try{
+                                JSch jsch = new JSch();
+                                Session = jsch.getSession(SFTPUSER,SFTPHOST,SFTPPORT);
+                                Session.setPassword(SFTPPASS);
+                                java.util.Properties config = new java.util.Properties();
+                                config.put("StrictHostKeyChecking", "no");
+                                Session.setConfig(config);
+                                Session.connect();   /* send the file to the server */
+                                channel = Session.openChannel("sftp");
+                                channel.connect();
+                                channelSftp = (ChannelSftp)channel;
+                                channelSftp.cd(SFTPWORKINGDIR);
+                                File f = new File(saveFile);
+                                channelSftp.put(new FileInputStream(f), f.getName());
+                    }catch(Exception ex){
+                    ex.printStackTrace();
+}
+
